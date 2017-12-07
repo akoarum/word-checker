@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+/* ===============================
+ * clearfix
+ * ============================= */
+
+%clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+
+/* ===============================
+ * マーカー
+ * ============================= */
+
+.wordChecker-marker {
+  margin: 0 1px;
+  padding: 2px;
+  background: yellow;
+
+  &.is-current {
+    background: orange;
+  }
+}
+
+
+/* ===============================
+ * head表示
+ * ============================= */
+
+.wordChecker-headTable {
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+  font-size: 12px;
+
+  tr:first-child {
+    th,
+    td {
+      border-top: none;
+    }
+  }
+
+  th,
+  td {
+    padding: 6px 12px 5px;
+  }
+  th {
+    border-top: 1px solid #e0e0e0;
+    width: 20%;
+    background: #222;
+    font-weight: normal;
+    text-align: left;
+    color: #fff;
+  }
+  td {
+    border-top: 1px solid #e0e0e0;
+    background: #fff;
+  }
+}
+
+
+/* ===============================
+ * 属性値
+ * ============================= */
+
+.wordChecker-attr {
+  display: inline-block;
+  padding: 2px 4px;
+  background: #222;
+  font-size: 12px;
+  font-weight: normal;
+  color: #fff;
+  z-index: 10000;
+}
+
+
+/* ===============================
+ * コンテナ
+ * ============================= */
+
+.wordChecker-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, .4);
+  box-sizing: border-box;
+  padding: 24px 26px;
+  width: 100%;
+  height: 290px;
+  background: #fff;
+  z-index: 10000;
+  overflow-y: scroll;
+  transform: translateY(100%);
+  animation: CONTAINER_OPEN .6s ease forwards;
+
+  @keyframes CONTAINER_OPEN {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+
+  @media screen and (max-width: 767px) {
+    padding: 20px 12px;
+  }
+}
+
+
+/* ===============================
+ * 見出し
+ * ============================= */
+
+.wordChecker-title {
+  display: table;
+  margin-bottom: 11px;
+  width: 100%;
+  line-height: 1.2;
+
+  &__main,
+  &__project {
+    display: table-cell;
+    vertical-align: bottom;
+  }
+  &__main {
+    width: 100%;
+    font-size: 0;
+  }
+  &__number {
+    display: inline-block;
+    font-size: 24px;
+  }
+  &__words {
+    font-size: 16px;
+    font-weight: normal;
+  }
+  &__project {
+    font-size: 13px;
+    font-weight: normal;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: block;
+    margin-bottom: 14px;
+    width: auto;
+
+    &__main,
+    &__project {
+      display: block;
+      vertical-align: baseline;
+    }
+    &__main {
+      margin-bottom: 6px;
+    }
+    &__number {
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+    &__words {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    &__project {
+      display: block;
+      font-size: 11px;
+      text-align: right;
+    }
+  }
+}
+
+
+/* ===============================
+ * リスト
+ * ============================= */
+
+.wordChecker-list {
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+
+  &__item {
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+
+    a {
+      @extend %clearfix;
+      display: block;
+      padding: 13px 11px 12px;
+      font-size: 0;
+      line-height: 1;
+      text-decoration: none;
+      color: #333;
+      transition: background .5s ease;
+
+      &:hover {
+        background: #fff3e5;
+      }
+    }
+  }
+  &__word {
+    font-size: 14px;
+  }
+  &__txt {
+    float: right;
+    display: inline-block;
+    margin-left: 14px;
+    width: 30em;
+    font-size: 12px;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 767px) {
+    &__word {
+      display: block;
+      margin-bottom: 4px;
+    }
+    &__txt {
+      float: none;
+      display: block;
+      margin-left: 0;
+      width: auto;
+    }
+  }
+}

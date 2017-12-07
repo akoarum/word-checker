@@ -1,0 +1,376 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Foundation
+   ========================================================================== */
+
+@import "./foundation/normalize";
+
+$maxWidth: 860px;
+$borderColor: #dadada;
+
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+/* ヘッダー
+   ----------------------------------------------------------------- */
+
+.l-header {
+  padding: 19px 0 18px;
+  background: linear-gradient(to right, #0b4bbf 0%, #2261d1 50%, #0b4bbf 100%);
+
+  &__inner {
+    margin: 0 auto;
+    max-width: $maxWidth;
+  }
+  &__title {
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-family: "Prociono";
+    line-height: 1;
+    color: #fff;
+  }
+}
+
+
+/* フッター
+   ----------------------------------------------------------------- */
+
+.l-footer {
+  padding-top: 28px;
+  font-size: 1.2rem;
+  color: #c9c9c9;
+  text-align: center;
+}
+
+
+/* メインコンテンツ
+   ----------------------------------------------------------------- */
+
+.l-main {
+  padding: 32px 0 38px;
+  background: #f0f0f0;
+
+  &__inner {
+    margin: 0 auto;
+    box-sizing: border-box;
+    max-width: $maxWidth;
+
+    > *:first-child {
+      margin-top: 0;
+    }
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+
+/* ==========================================================================
+   Component
+   ========================================================================== */
+
+
+/* 見出しレベル2
+   ----------------------------------------------------------------- */
+
+.c-hdg-lv2 {
+  margin-bottom: 16px;
+  border-bottom: 1px solid $borderColor;
+  padding: 13px 14px 10px;
+  font-size: 1.8rem;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+
+/* 説明テキスト
+   ----------------------------------------------------------------- */
+
+.c-txt-desc {
+  margin-top: 7px;
+  font-size: 1.2rem;
+}
+
+
+/* ワードリスト
+   ----------------------------------------------------------------- */
+
+.c-list-word {
+  &__item {
+    position: relative;
+    margin-top: -1px;
+    border: 1px solid $borderColor;
+    padding: 8px 12px 7px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__delete {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    border-radius: 0;
+    padding: 4px 9px 5px;
+    background: #333;
+    color: #fff;
+    line-height: 1;
+    transform: translateY(-50%);
+    transition: background .4s ease;
+
+    &:hover {
+      background: #434343;
+    }
+  }
+}
+
+.wordList {
+  &-enter-active,
+  &-leave-active,
+  &-move {
+    transition: all .8s ease;
+  }
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  &-leave-active {
+    position: absolute;
+  }
+}
+
+
+/* 設定リスト
+   ----------------------------------------------------------------- */
+
+.c-list-setting {
+  &__item {
+    display: table;
+    width: 100%;
+
+    & + .c-list-setting__item {
+      margin-top: 6px;
+      border-top: 1px solid $borderColor;
+      padding-top: 6px;
+    }
+  }
+  &__label,
+  .c-form-radio {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  &__label {
+    width: 100%;
+  }
+  .c-form-radio {
+    white-space: nowrap;
+  }
+}
+
+
+/* プロジェクト削除ボタン
+   ----------------------------------------------------------------- */
+
+.c-btn-remove {
+  margin: 32px 0;
+  text-align: right;
+
+  button {
+    display: inline-block;
+    border-radius: 0;
+    padding: 9px 16px;
+    background: #333;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: #fff;
+    transition: background .4s ease;
+
+    &:hover {
+      background: #434343;
+    }
+  }
+}
+
+
+/* セクション
+   ----------------------------------------------------------------- */
+
+.c-sec {
+  padding: 0 14px 18px;
+  background: #fff;
+
+  .c-hdg-lv2 {
+    margin: 0 -14px 16px;
+  }
+
+  & + .c-sec {
+    margin-top: 34px;
+  }
+}
+
+
+/* ワードの追加
+   ----------------------------------------------------------------- */
+
+.c-box-add {
+  margin-top: 14px;
+  border: 1px solid #8bb4ff;
+  padding: 14px 12px 10px;
+  background: #ecf3ff;
+
+  input {
+    box-sizing: border-box;
+    border: 1px solid $borderColor;
+    padding: 4px 12px;
+    width: 50%;
+    font-size: 1.4rem;
+    outline: none;
+    transition: border .3s ease;
+
+    &:focus {
+      border: 1px solid #7bd077;
+    }
+  }
+  button {
+    border-radius: 0;
+    margin-left: 12px;
+    padding: 9px 34px;
+    background: #ff51bb;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: #fff;
+    transition: all .3s ease;
+
+    &[disabled="disabled"] {
+      background: #a8a8a8;
+      color: #ccc;
+      cursor: default;
+
+      &:hover {
+        background: #a8a8a8;
+      }
+    }
+    &:hover {
+      background: #fe7ecc;
+    }
+  }
+}
+
+
+/* セレクトボックス
+   ----------------------------------------------------------------- */
+
+.c-form-select {
+  position: relative;
+  display: inline-block;
+  width: 40%;
+
+  &::after {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    content: '';
+    margin-top: -4px;
+    border-width: 7px 4px;
+    border-color: #333 transparent transparent;
+    border-style: solid;
+    pointer-events: none;
+  }
+
+  select {
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid $borderColor;
+    padding: 8px 14px 7px;
+    width: 100%;
+    background: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: border .3s ease;
+
+    &:focus {
+      border: 1px solid #7bd077;
+    }
+  }
+}
+
+
+/* ラジオ
+   ----------------------------------------------------------------- */
+
+.c-form-radio {
+  text-transform: uppercase;
+  font-size: 0;
+
+  label {
+    position: relative;
+    display: inline-block;
+    margin-left: 12px;
+    padding-left: 24px;
+    font-size: 1.5rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      content: '';
+      border: 1px solid $borderColor;
+      border-radius: 50%;
+      width: 17px;
+      height: 17px;
+      background: #fff;
+      transform: translateY(-50%);
+    }
+  }
+  span {
+    display: inline-block;
+    &::after {
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      content: '';
+      border-radius: 50%;
+      width: 9px;
+      height: 9px;
+      background: #0b4bbf;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+  }
+  input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+
+    &:checked {
+      & + span {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+
+/* エラーテキスト
+   ----------------------------------------------------------------- */
+
+.c-form-error {
+  margin-top: 3px;
+  font-size: 1.3rem;
+  color: #d62424;
+}
